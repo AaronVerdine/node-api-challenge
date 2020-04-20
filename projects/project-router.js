@@ -1,5 +1,6 @@
 const express = require("express");
 const projectDb = require("../data/helpers/projectModel");
+const actionsDb = require("../actions/actions-router");
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get("/", (req, res) => {
 });
 
 // This request retrieves a specified projects's actions
-router.get("/:id/completed", (req, res) => {
+router.get("/:id", (req, res) => {
   projectDb
     .getProjectActions(req.params.id)
     .then((projectId) => {
